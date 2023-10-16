@@ -1,12 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import PageNav from "./PageNav";
 function Layout() {
 	return (
 		<div className="site-wrapper">
 			{/* <Header /> */}
-			<header>
-				<h1>Allo</h1>
-			</header>
+			{/* <PageNav /> */}
 			<main>
 				<Outlet />
 			</main>
