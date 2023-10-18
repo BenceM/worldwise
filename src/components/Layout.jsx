@@ -5,7 +5,7 @@ function Layout() {
 	return (
 		<div className="site-wrapper">
 			{/* <Header /> */}
-			{/* <PageNav /> */}
+
 			<main>
 				<Outlet />
 			</main>
