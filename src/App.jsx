@@ -12,6 +12,7 @@ import Layout from "./components/Layout";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./components/AppLayout";
 import Login from "./pages/Login";
+import CityList from "./components/CityList";
 function App() {
 	const router = createBrowserRouter(
 		createRoutesFromElements(
@@ -24,7 +25,14 @@ function App() {
 					<Route index element={<HomePage />} />
 					<Route path="*" element={<PageNotFound />} />
 				</Route>
-				,<Route path="/app" element={<AppLayout />}></Route>,
+				,
+				<Route path="/app" element={<AppLayout />}>
+					<Route index element={<CityList />} />
+					<Route path="cities" element={<p>cities</p>} />
+					<Route path="countries" element={<p>countries</p>} />
+					<Route path="form" element={<p>Form</p>} />
+				</Route>
+				,
 			</>,
 		),
 	);
