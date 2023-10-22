@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./CityItem.module.css";
 function CityItem({ city }) {
+	console.log(city);
 	const formatDate = (date) =>
 		new Intl.DateTimeFormat("en", {
 			day: "numeric",
