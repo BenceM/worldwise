@@ -10,6 +10,8 @@ import Message from "./Message";
 import Spinner from "./Spinner";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useCities } from "../context/CitiesContext";
+
 export function convertToEmoji(countryCode) {
 	const codePoints = countryCode
 		.toUpperCase()
@@ -27,6 +29,8 @@ function Form() {
 	const [isGeoLoading, setIsGeoLoading] = useState(false);
 	const [emoji, setEmoji] = useState("");
 	const [geoError, setGeoError] = useState("");
+	const { createCity, isLoading } = useCities();
+	const navigate = useNavigate();
 	useEffect(() => {
 		if (!lat && !lng) return;
 		async function fetchCityData() {
@@ -49,15 +53,30 @@ function Form() {
 		}
 		fetchCityData();
 	}, [lat, lng]);
-	function handleSubmit(e) {
+	async function handleSubmit(e) {
 		e.preventDefault();
+		if (!cityName || !date) return;
+		const newCity = {
+			cityName,
+			country,
+			emoji,
+			date,
+			notes,
+			position: { lat, lng },
+		};
+
+		await createCity(newCity);
+		navigate("/app");
 	}
 	if (isGeoLoading) return <Spinner />;
 	if (!lat && !lng) return <Message message={"Click on the map somewhere"} />;
 	if (geoError) return <Message message={geoError} />;
 
 	return (
-		<form className={styles.form} onSubmit={handleSubmit}>
+		<form
+			className={`${styles.form} ${isLoading ? styles.loading : ""}`}
+			onSubmit={handleSubmit}
+		>
 			<div className={styles.row}>
 				<label htmlFor="cityName">City name</label>
 				<input
