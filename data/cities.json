@@ -25,18 +25,6 @@
       "id": 17806751
     },
     {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2023-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
-      "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
-      },
-      "id": 98443197
-    },
-    {
       "cityName": "Lindau",
       "country": "Germany",
       "emoji": "🇩🇪",
@@ -83,6 +71,18 @@
         "lng": "12.959096624265436"
       },
       "id": 98443201
+    },
+    {
+      "cityName": "Naples",
+      "country": "Italy",
+      "emoji": "🇮🇹",
+      "date": "2023-11-04T20:16:58.322Z",
+      "notes": "geogusrr",
+      "position": {
+        "lat": "40.84247822366633",
+        "lng": "14.320523049188212"
+      },
+      "id": 98443202
     }
   ]
 }
