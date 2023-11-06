@@ -18,6 +18,7 @@ import CountryList from "./components/CountryList";
 import City from "./components/City";
 import Form from "./components/Form";
 import { CitiesProvider } from "./context/CitiesContext";
+import { AuthProvider } from "./context/FakeAuthContext";
 function App() {
 	const router = createBrowserRouter(
 		createRoutesFromElements(
@@ -42,9 +43,11 @@ function App() {
 		),
 	);
 	return (
-		<CitiesProvider>
-			<RouterProvider router={router} />;
-		</CitiesProvider>
+		<AuthProvider>
+			<CitiesProvider>
+				<RouterProvider router={router} />;
+			</CitiesProvider>
+		</AuthProvider>
 	);
 }
 
