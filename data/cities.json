@@ -37,18 +37,6 @@
       "id": 98443198
     },
     {
-      "cityName": "Peniscola",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2023-11-03T19:13:46.606Z",
-      "notes": "sss",
-      "position": {
-        "lat": "40.37840069801121",
-        "lng": "0.3397914660704649"
-      },
-      "id": 98443199
-    },
-    {
       "cityName": "Campana",
       "country": "Italy",
       "emoji": "🇮🇹",
@@ -83,6 +71,18 @@
         "lng": "14.320523049188212"
       },
       "id": 98443202
+    },
+    {
+      "cityName": "Seaford",
+      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
+      "emoji": "🇬🇧",
+      "date": "2023-11-06T18:29:24.448Z",
+      "notes": "",
+      "position": {
+        "lat": "50.76119063613879",
+        "lng": "0.13578161700104732"
+      },
+      "id": 98443203
     }
   ]
 }
