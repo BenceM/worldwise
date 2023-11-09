@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import {
 	Navigate,
 	Route,
@@ -6,20 +6,32 @@ import {
 	createBrowserRouter,
 	createRoutesFromElements,
 } from "react-router-dom";
-import Product from "./pages/Product";
-import HomePage from "./pages/HomePage";
-import Pricing from "./pages/Pricing";
-import Layout from "./components/Layout";
-import PageNotFound from "./pages/PageNotFound";
-import AppLayout from "./components/AppLayout";
-import Login from "./pages/Login";
+
+import { CitiesProvider } from "./context/CitiesContext";
+import { AuthProvider } from "./context/FakeAuthContext";
+import ProtectedRoute from "./pages/ProtectedRoute";
+
 import CityList from "./components/CityList";
 import CountryList from "./components/CountryList";
 import City from "./components/City";
 import Form from "./components/Form";
-import { CitiesProvider } from "./context/CitiesContext";
-import { AuthProvider } from "./context/FakeAuthContext";
-import ProtectedRoute from "./pages/ProtectedRoute";
+import SpinnerFullPage from "./components/SpinnerFullPage";
+import Layout from "./components/Layout";
+// import Product from "./pages/Product";
+// import HomePage from "./pages/HomePage";
+// import Pricing from "./pages/Pricing";
+// import PageNotFound from "./pages/PageNotFound";
+// import AppLayout from "./components/AppLayout";
+// import Login from "./pages/Login";
+
+const HomePage = lazy(() => import("./pages/Homepage"));
+const Product = lazy(() => import("./pages/Product"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+//const Layout = lazy(() => import("./components/Layout"));
+const PageNotFound = lazy(() => import("./pages/PageNotFound"));
+const AppLayout = lazy(() => import("./components/AppLayout"));
+const Login = lazy(() => import("./pages/Login"));
+
 function App() {
 	const router = createBrowserRouter(
 		createRoutesFromElements(
@@ -53,7 +65,9 @@ function App() {
 	return (
 		<AuthProvider>
 			<CitiesProvider>
-				<RouterProvider router={router} />;
+				<Suspense fallback={<SpinnerFullPage />}>
+					<RouterProvider router={router} />;
+				</Suspense>
 			</CitiesProvider>
 		</AuthProvider>
 	);
